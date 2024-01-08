@@ -104,7 +104,7 @@ const addEmployee = (teamMembers) => {
   }) 
 }
 
-const userQuestions = (choice, questions, teamMembers) {
+const userQuestions = (choice, questions, teamMembers) => {
   inquirer.prompt(questions).then(answers => {
     let newRole;
     if(choice === 'manager'){
@@ -121,3 +121,9 @@ const userQuestions = (choice, questions, teamMembers) {
   })
 }
 
+const generateTemplate = teamMembers => {
+  const generatedFile = render(teamMembers)
+  writetoFile(outputPath, generatedFile)
+}
+
+init();
