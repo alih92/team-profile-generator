@@ -13,3 +13,24 @@ const render = require("./src/page-template.js");
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
+const engineerQuestions = [{
+  type: 'input',
+  name: 'engineerName',
+  message: 'Insert engineer name'
+},
+{
+  type: 'input',
+  name: 'engineerId',
+  message: 'Insert employee ID'
+},
+{
+  type: 'input',
+  name: 'engineerEmail',
+  message: 'Insert engineer email'
+},
+{
+  type: 'input',
+  name: 'engineerGithub',
+  message: 'Insert engineer GitHub username'
+}]
+
