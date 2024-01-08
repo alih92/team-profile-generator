@@ -34,3 +34,44 @@ const engineerQuestions = [{
   message: 'Insert engineer GitHub username'
 }]
 
+const internQuestions = [{
+  type: 'input',
+  name: 'internName',
+  message: 'Insert intern name'
+},
+{
+  type: 'input',
+  name: 'internId',
+  message: 'Insert intern ID'
+},
+{
+  type: 'input',
+  name: 'internEmail',
+  message: 'Insert intern email'
+},
+{
+  type: 'input',
+  name: 'internSchool',
+  message: 'Insert intern School name'
+}]
+
+const managerQuestions = [{
+  type: 'input',
+  name: 'managerName',
+  message: 'Insert Manager name'
+},
+{
+  type: 'input',
+  name: 'engineerId',
+  message: 'Insert Manager ID'
+},
+{
+  type: 'input',
+  name: 'engineerEmail',
+  message: 'Insert Manager email'
+},
+{
+  type: 'input',
+  name: 'managerOfficeNumber',
+  message: 'Insert Manager office number'
+}]
