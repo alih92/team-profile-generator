@@ -88,7 +88,7 @@ function init(){
 }
  
 const addEmployee = (teamMembers) => {
-  inquirer.promp({
+  inquirer.prompt({
     type: 'list',
     message: 'Choose one of the following options if you would like to add more employees',
     name: 'choice',
@@ -102,5 +102,22 @@ const addEmployee = (teamMembers) => {
       generateTemplate(teamMembers)
     }
   }) 
+}
+
+const userQuestions = (choice, questions, teamMembers) {
+  inquirer.prompt(questions).then(answers => {
+    let newRole;
+    if(choice === 'manager'){
+      newRole = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
+    } else if (choice === 'engineer'){
+      newRole = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+    } else if (choice === 'intern'){
+      newRole = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+    }
+
+    teamMembers.push(newRole);
+
+    addEmployee(teamMembers);
+  })
 }
 
