@@ -10,6 +10,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 
+const teamMembers = [];
+
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
@@ -21,7 +23,7 @@ const engineerQuestions = [{
 {
   type: 'input',
   name: 'engineerId',
-  message: 'Insert employee ID'
+  message: 'Insert engineer ID'
 },
 {
   type: 'input',
@@ -62,12 +64,12 @@ const managerQuestions = [{
 },
 {
   type: 'input',
-  name: 'engineerId',
+  name: 'managerId',
   message: 'Insert Manager ID'
 },
 {
   type: 'input',
-  name: 'engineerEmail',
+  name: 'managerEmail',
   message: 'Insert Manager email'
 },
 {
@@ -75,3 +77,30 @@ const managerQuestions = [{
   name: 'managerOfficeNumber',
   message: 'Insert Manager office number'
 }]
+
+function writetoFile(fileName, data) {
+   fs.writeFile(fileName, data, (err) => err ? console.log(err) : console.log ('Generating template'));
+}
+
+function init(){
+  let teamMembers = []
+  userQuestions ('manager', managerQuestions, teamMembers);
+}
+ 
+const addEmployee = (teamMembers) => {
+  inquirer.promp({
+    type: 'list',
+    message: 'Choose one of the following options if you would like to add more employees',
+    name: 'choice',
+    choices: ['Engineer', 'Intern', 'Finish building the team']
+  }).then(answers => {
+    if(answers.choice === 'Engineer'){
+      userQuestions('engineer', engineerQuestions, teamMembers);
+    } else if (answers.choice === 'Intern'){
+      userQuestions('intern', internQuestions, teamMembers);
+    } else if (answers.choice === 'Finish building the team'){
+      generateTemplate(teamMembers)
+    }
+  }) 
+}
+
